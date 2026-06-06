@@ -112,9 +112,9 @@ Follow these steps to configure your Okta Developer Account to work with Apigee.
    - **Grant type**: Authorization Code
    - **Sign-in redirect URIs**: 
      ```text
-     https://oauth.tools/callback/code
+     https://YOUR_APIGEE_HOST/v1/oidc/pkce/callback
      ```
-![okta redirect uri](./images/okta-oidc-03.png)   
+![okta redirect uri](./images/okta-oidc-031.png)   
    - **Controlled access**: Select **Allow everyone in your organization to access** (or configure groups accordingly).
 ![okta controlled access](./images/okta-oidc-04.png)
 6. Click **Save**.
@@ -136,7 +136,7 @@ On the Okta App configuration page, copy and save the following credentials:
 - **Client ID**
 - **Client Secret**
 - **Okta Domain** (e.g., `integrator-XXXXXX.okta.com`)
-![okta credentials](./images/okta-oidc-05.png)
+![okta credentials](./images/okta-oidc-051.png)
 
 ### 3. Create a Test User in Okta
 1. Navigate to **Directory** > **People**.
