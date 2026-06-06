@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage enabled="true" name="AM-error-message">
+  <DisplayName>AM-error-message</DisplayName>
+  <Set>
+    <Payload contentType="text/plain">SERVICE UNAVAILABLE. PLEASE CONTACT SUPPORT: support@company.com</Payload>
+    <StatusCode>500</StatusCode>
+    <ReasonPhrase>Service Unavailable Now!</ReasonPhrase>
+  </Set>
+  <Add>
+    <Headers>
+      <Header name="faultname">{fault.name}</Header>
+    </Headers>
+  </Add>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

@@ -93,6 +93,7 @@ sequenceDiagram
 1. **Opaque Tokens**: The client application only receives an opaque access token minted by Apigee. The backend Okta tokens (Access/ID Token) are stored securely as custom attributes within Apigee.
 2. **Local Token Verification**: Subsequent API calls are validated inside Apigee via the `VerifyAccessToken` policy, ensuring minimal latency and high performance.
 3. **Decoupled Client Management**: The API client registers and authenticates against Apigee, while user identity remains centralized in Okta.
+4. **Mandatory PKCE Enforcement**: The architecture strictly enforces PKCE (Proof Key for Code Exchange) using the `S256` challenge method. Authorization requests without the required PKCE parameters (`code_challenge` and `code_challenge_method`) are rejected at the Apigee gateway level.
 
 ---
 
@@ -158,13 +159,22 @@ If you did not select "Allow everyone in your organization to access" during the
 ## oidc proxy Setup
 
 ### 1. Configure Okta Domain
-Before deploying the proxy, configure your Okta domain:
-1. Open the okta.properties file whose location is ./apiproxy/resources/properties/okta.properties.
-2. Replace the `domain_name` value with your Okta Domain (e.g., `integrator-XXXXXX.okta.com`):
+Before deploying the proxy, you must check the Discovery document:
+1. Open `https://YOUR_OKTA_DOMAIN/oauth2/default/.well-known/openid-configuration` in your browser to check the configuration details.
+![okta discovery document](./images/okta-oidc-061.png)
+2. Open the okta.properties file located at `./apiproxy/resources/properties/okta.properties`.
+3. Replace `okta_domain`, `okta_authorize_uri`, `okta_token_uri`, `okta_jwks_uri`, `okta_idp_issuer` with the values verified from the Discovery document:
    ```properties
-   domain_name=your-okta-domain
+   okta_domain=integrator-XXXXXX.okta.com
+   okta_authorize_uri=/oauth2/default/v1/authorize
+   okta_token_uri=/oauth2/default/v1/token
+   okta_jwks_uri=/oauth2/default/v1/keys
+   okta_idp_issuer=https://YOUR_OKTA_DOMAIN/oauth2/default
+
+   apigee_host=YOUR_APIGEE_HOST
+   apigee_redirect_uri=/v1/oidc/pkce/callback  
    ```
-![okta domain](./images/okta-oidc-06.png)
+![okta domain](./images/okta-oidc-063.png)
 
 ### 2. Deploy the Proxy & Configure Entities
 Configure your Apigee environment variables and run the deployment script to deploy the API proxy, and automatically set up the API product and developer app.
@@ -181,15 +191,15 @@ Configure your Apigee environment variables and run the deployment script to dep
 
 2. Run the deployment script:
    ```bash
-   ./deploy-oidc-okta.sh
+   ./deploy-oidc-pkce-okta.sh
    ```
 
 3. Note down the **Client ID** (Consumer Key) and **Client Secret** (Consumer Secret) returned at the end of the script:
    ```text
    ============================================================
    Deployment and Setup Completed!
-   API Proxy: oidc-okta
-   Developer App: oidc-okta-app
+   API Proxy: oidc-pkce-okta
+   Developer App: oidc-pkce-okta-app
    Client ID (Consumer Key): XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
    Client Secret (Consumer Secret): XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
    ============================================================

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-BuildRefreshTokenRequest">
+  <DisplayName>AM-BuildRefreshTokenRequest</DisplayName>
+  <Properties/>
+  <AssignTo createNew="true" type="request">idpPostTokenRequest</AssignTo>
+  <Set>
+    <Headers>
+      <Header name="content-type">application/x-www-form-urlencoded</Header>
+      <Header name="accept">application/json</Header>
+    </Headers>
+    <FormParams>
+      <FormParam name="client_id">{clientid}</FormParam>
+      <FormParam name="client_secret">{clientsecret}</FormParam>
+      <FormParam name="grant_type">{request.formparam.grant_type}</FormParam>
+      <FormParam name="refresh_token">{request.formparam.refresh_token}</FormParam>
+    </FormParams>
+    <Verb>POST</Verb>
+  </Set>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>

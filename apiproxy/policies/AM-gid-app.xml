@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-gid-app">
+  <DisplayName>AM-okta-app</DisplayName>
+  <Properties/>
+  <Set>
+    <Headers/>
+    <QueryParams>
+      <QueryParam name="client_id">{clientid}</QueryParam>
+    </QueryParams>
+    <FormParams/>
+    <!-- <Verb>GET</Verb> -->
+    <Path/>
+  </Set>
+  <AssignVariable>
+    <Name>oktaquerystring</Name>
+    <!-- <Template>redirect_uri={request.queryparam.redirect_uri}&amp;prompt=login&amp;response_type=code&amp;scope=openid+email+profile&amp;state=abc-123&amp;client_id={clientid}</Template> -->
+    <Template>redirect_uri={flow.idp.apigee.redirect_uri}&amp;prompt=login&amp;response_type=code&amp;scope={request.queryparam.scope}&amp;state={oidc.flow.authorization.state2}&amp;client_id={clientid}&amp;code_challenge={oidc.flow.authorize.code_challenge}&amp;code_challenge_method={oidc.flow.authorize.code_challenge_method}</Template>
+  </AssignVariable>
+</AssignMessage>

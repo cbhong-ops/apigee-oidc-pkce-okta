@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-RedirectToApp-PKCE">
+  <DisplayName>AM-RedirectToApp-PKCE</DisplayName>
+  <Properties/>
+  <Set>
+    <Headers>
+      <Header name="Location">{oidc.flow.callback.redirect_uri}?code={oauthv2authcode.OAuthV2-StoreExternalAzCode-PKCE.code}&amp;state={oidc.flow.callback.state1}</Header>
+    </Headers>
+    <StatusCode>302</StatusCode>
+    <ReasonPhrase>Found</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-kvm-success">
+  <DisplayName>AM-kvm-success</DisplayName>
+  <Set>
+    <Payload/>
+    <StatusCode>204</StatusCode>
+    <ReasonPhrase>No Content</ReasonPhrase>
+  </Set>
+</AssignMessage>

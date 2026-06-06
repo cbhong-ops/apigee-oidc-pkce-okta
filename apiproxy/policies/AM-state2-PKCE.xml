@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-state2-PKCE">
+  <DisplayName>AM-state2-PKCE</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>oidc.flow.authorization.state2</Name>
+    <Ref>oauthv2authcode.OAuthV2-GenerateAzCode-State2-PKCE.code</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>flow.idp.apigee.redirect_uri</Name>
+    <Template>https://{propertyset.okta.apigee_host}{propertyset.okta.apigee_redirect_uri}</Template>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

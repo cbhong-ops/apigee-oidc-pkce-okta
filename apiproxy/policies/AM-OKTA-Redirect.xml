@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-OKTA-Redirect">
+  <DisplayName>AM-OKTA-Redirect</DisplayName>
+  <Properties/>
+  <AssignTo createNew="true" type="response">response</AssignTo>
+  <Remove>
+    <Payload>true</Payload>
+  </Remove>
+  <Set>
+    <StatusCode>302</StatusCode>
+    <ReasonPhrase>Found</ReasonPhrase>
+    <Headers>
+      <!-- 
+            <Header name="Location">https://accounts.google.com/o/oauth2/auth?client_id={request.queryparam.apikey}&amp;response_type=code&amp;response_mode=query&amp;scope=email+openid+profile&amp;redirect_uri=https://localhost&amp;state={messageid}</Header>
+            -->
+      <Header name="Location">https://{propertyset.okta.okta_domain}{propertyset.okta.okta_authorize_uri}?{oktaquerystring}</Header>
+    </Headers>
+  </Set>
+  <!-- Set this flow variable to indicate the response has been set -->
+  <AssignVariable>
+    <Name>flowResponse.ready</Name>
+    <Value>true</Value>
+  </AssignVariable>
+</AssignMessage>

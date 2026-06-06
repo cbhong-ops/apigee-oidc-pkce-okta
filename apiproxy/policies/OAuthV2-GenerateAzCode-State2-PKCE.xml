@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="OAuthV2-GenerateAzCode-State2-PKCE">
+  <DisplayName>OAuthV2-GenerateAzCode-State2-PKCE</DisplayName>
+  <Properties/>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <Operation>GenerateAuthorizationCode</Operation>
+  <ResponseType>oidc.flow.authorize.response_type</ResponseType>
+  <ClientId>oidc.flow.authorize.client_id</ClientId>
+  <RedirectUri>oidc.flow.authorize.redirect_uri</RedirectUri>
+  <GenerateResponse enabled="false"/>
+  <!-- Set query params as attributes of state2 (= az_code) -->
+  <Attributes>
+    <Attribute name="state1" ref="oidc.flow.authorize.state1" display="true"/>
+    <Attribute name="client_id" ref="oidc.flow.authorize.client_id" display="true"/>
+    <Attribute name="redirect_uri" ref="oidc.flow.authorize.redirect_uri" display="true"/>
+    <Attribute name="response_type" ref="oidc.flow.authorize.response_type" display="true"/>
+    <Attribute name="scope" ref="oidc.flow.authorize.scope" display="true"/>
+    <Attribute name="code_challenge" ref="oidc.flow.authorize.code_challenge" display="false"/>
+    <Attribute name="code_challenge_method" ref="oidc.flow.authorize.code_challenge_method" display="false"/>
+  </Attributes>
+  <RFCCompliantRequestResponse>true</RFCCompliantRequestResponse>
+</OAuthV2>

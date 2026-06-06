@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT continueOnError="false" enabled="true" name="JWT-JwtFromIdp">
+  <DisplayName>JWT-JwtFromIdp</DisplayName>
+  <Algorithm>RS256</Algorithm>
+  <Source>id_token</Source>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <PublicKey>
+    <JWKS ref="flow.idp.jwks_payload"/>
+  </PublicKey>
+</VerifyJWT>

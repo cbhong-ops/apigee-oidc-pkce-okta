@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations continueOnError="false" enabled="true" name="KVM-get-item" mapIdentifier="oidcsettings">
+  <DisplayName>KVM-get-item</DisplayName>
+  <ExpiryTimeInSecs>60</ExpiryTimeInSecs>
+  <Get assignTo="private.kvmval" index="1">
+    <Key>
+      <Parameter ref="request.queryparam.kvmkey"/>
+    </Key>
+  </Get>
+  <Scope>environment</Scope>
+</KeyValueMapOperations>

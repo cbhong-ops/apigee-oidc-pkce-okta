@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-error-clientinfo">
+  <DisplayName>AM-error-clientinfo</DisplayName>
+  <Set>
+    <Payload contentType="application/json">{
+          "error" : {
+    "code" : 500.01,
+    "message" : "You must pass clientinfo in HTTP header"
+  }
+        </Payload>
+    <StatusCode>500</StatusCode>
+    <ReasonPhrase>Rejected by Missing ClientInfo header</ReasonPhrase>
+  </Set>
+  <Add>
+    <Headers>
+      <Header name="client-info">No ClientInfo Header!</Header>
+    </Headers>
+  </Add>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

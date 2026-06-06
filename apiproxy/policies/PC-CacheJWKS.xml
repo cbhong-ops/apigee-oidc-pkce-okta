@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache continueOnError="false" enabled="true" name="PC-CacheJWKS">
+  <DisplayName>PC-CacheJWKS</DisplayName>
+  <CacheKey>
+    <Prefix>IDP_JWKS_CACHE</Prefix>
+    <KeyFragment ref="propertyset.okta.okta_idp_issuer"/>
+    <KeyFragment>jwksPayload</KeyFragment>
+  </CacheKey>
+  <CacheResource>IDP_JWKS_CACHE</CacheResource>
+  <Scope>Exclusive</Scope>
+  <ExpirySettings>
+    <TimeoutInSec>3600</TimeoutInSec>
+  </ExpirySettings>
+  <Source>jwks</Source>
+</PopulateCache>

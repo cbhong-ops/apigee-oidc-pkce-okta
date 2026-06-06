@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="oidc">
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>AddCORS</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <Flows>
+    <Flow name="Authorize">
+      <Description>Authorize Endpoint Call</Description>
+      <Request>
+        <Step>
+          <Name>Verify-API-Key</Name>
+        </Step>
+        <Step>
+          <Name>EV-GetQueryParam-PKCE</Name>
+        </Step>
+        <Step>
+          <Name>OAuthV2-GenerateAzCode-State2-PKCE</Name>
+        </Step>
+        <Step>
+          <Name>AM-state2-PKCE</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>KVM-okta-app</Name>
+        </Step>
+        <Step>
+          <Name>AM-gid-app</Name>
+        </Step>
+        <Step>
+          <Name>AM-OKTA-Redirect</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/auth") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Callback">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>OAuthV2-AttributesFromAzCode-State2</Name>
+        </Step>
+        <Step>
+          <Name>AM-StateAttributes-PKCE</Name>
+        </Step>
+        <Step>
+          <Name>OAuthV2-StoreExternalAzCode-PKCE</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-RedirectToApp-PKCE</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/callback") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Token">
+      <Description>Token endpoint for auth code</Description>
+      <Request>
+        <Step>
+          <Name>VA-ClientId</Name>
+        </Step>
+        <Step>
+          <Name>KVM-okta-app</Name>
+        </Step>
+        <Step>
+          <Name>AM-Validate-Client-Credentials</Name>
+        </Step>
+        <Step>
+          <Name>OAuthV2-GetOriginalStateAttributes</Name>
+          <Condition>(request.formparam.grant_type == "authorization_code")</Condition>
+        </Step>
+        <Step>
+          <Condition>request.formparam.grant_type == "authorization_code"</Condition>
+          <Name>JS-PKCECodeVerification</Name>
+        </Step>
+        <Step>
+          <Condition>(request.formparam.grant_type == "authorization_code") and (oidc.flow.isPKCECodeVerified == false)</Condition>
+          <Name>RF-InvalidGrant</Name>
+        </Step>
+        <Step>
+          <Name>AM-BuildCodeRequest</Name>
+          <Condition>(request.formparam.grant_type == "authorization_code")</Condition>
+        </Step>
+        <Step>
+          <Name>AM-BuildRefreshTokenRequest</Name>
+          <Condition>(request.formparam.grant_type == "refresh_token")</Condition>
+        </Step>
+        <Step>
+          <Name>SC-Get-Access-Token</Name>
+        </Step>
+        <Step>
+          <Name>EV-Get-OKTA-Token</Name>
+        </Step>
+        <Step>
+          <Name>AM-UpdateTokenAttr</Name>
+        </Step>
+        <Step>
+          <Name>LC-GetJWKS</Name>
+        </Step>
+        <Step>
+          <Name>SC-GetJWKSFromIdp</Name>
+          <Condition>(lookupcache.LC-GetJWKS.cachehit == false)</Condition>
+        </Step>
+        <Step>
+          <Name>PC-CacheJWKS</Name>
+          <Condition>(lookupcache.LC-GetJWKS.cachehit == false)</Condition>
+        </Step>
+        <Step>
+          <Name>EV-JWKS</Name>
+        </Step>
+        <Step>
+          <Name>JWT-JwtFromIdp</Name>
+        </Step>
+        <Step>
+          <Name>JWT-Parse</Name>
+        </Step>
+        <Step>
+          <Name>EV-Get-ID-Token</Name>
+        </Step>
+        <Step>
+          <Condition>request.formparam.grant_type == "authorization_code"</Condition>
+          <Name>OAuthV2-GenerateAccessToken</Name>
+        </Step>
+        <Step>
+          <Condition>request.formparam.grant_type == "refresh_token"</Condition>
+          <Name>OAuthV2-GenerateRefreshToken</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/token") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="Protected">
+      <Description>Only allows calls with a valid OAuth Token</Description>
+      <Request>
+        <Step>
+          <Name>VerifyAccessToken</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-Response</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/protected") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="unknown request">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>RF-UnknownRequest</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+  </Flows>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <HTTPProxyConnection>
+    <BasePath>/v1/oidc/pkce</BasePath>
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="NoRouteRule"/>
+</ProxyEndpoint>

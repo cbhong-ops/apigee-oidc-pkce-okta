@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="OAuthV2-GenerateRefreshToken">
+  <DisplayName>OAuthV2-GenerateRefreshToken</DisplayName>
+  <Properties/>
+  <Attributes>
+    <Attribute name="user_email" ref="user_email" display="true"/>
+    <Attribute name="user_name" ref="user_name" display="true"/>
+    <!--Attribute name="user_picture" ref="user_picture" display="true"/-->
+  </Attributes>
+  <ExternalAuthorization>true</ExternalAuthorization>
+  <ExternalAccessToken>access_token</ExternalAccessToken>
+  <ExternalRefreshToken>refresh_token</ExternalRefreshToken>
+  <Operation>RefreshAccessToken</Operation>
+  <ExpiresIn ref="expires_in_ms">600000</ExpiresIn>
+  <RefreshTokenExpiresIn ref="refresh_expires_in_ms">360000000</RefreshTokenExpiresIn>
+  <!--ExpiresIn>-1</ExpiresIn-->
+  <OverrideRefreshToken>true</OverrideRefreshToken>
+  <GenerateResponse enabled="true"/>
+  <StoreToken>true</StoreToken>
+  <RFCCompliantRequestResponse>true</RFCCompliantRequestResponse>
+  <Tokens/>
+</OAuthV2>

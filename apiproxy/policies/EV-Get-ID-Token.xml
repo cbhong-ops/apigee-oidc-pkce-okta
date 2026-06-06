@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="EV-Get-ID-Token">
+  <DisplayName>EV-Get-ID-Token</DisplayName>
+  <Source>jwt.JWT-Parse.payload-json</Source>
+  <JSONPayload>
+    <Variable name="user_email" type="string">
+      <JSONPath>$.email</JSONPath>
+    </Variable>
+    <Variable name="user_name" type="string">
+      <JSONPath>$.name</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

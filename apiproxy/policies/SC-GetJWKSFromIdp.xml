@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="true" name="SC-GetJWKSFromIdp">
+  <DisplayName>SC-GetJWKSFromIdp</DisplayName>
+  <Properties/>
+  <Request clearPayload="true">
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  </Request>
+  <Response>jwks</Response>
+  <HTTPTargetConnection>
+    <Properties/>
+    <URL>https://{propertyset.okta.okta_domain}{propertyset.okta.okta_jwks_uri}</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

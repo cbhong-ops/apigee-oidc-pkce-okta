@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations continueOnError="false" enabled="true" name="KVM-put-item" mapIdentifier="oidcsettings">
+  <DisplayName>KVM-put-item</DisplayName>
+  <Scope>environment</Scope>
+  <ExpiryTimeInSecs>180</ExpiryTimeInSecs>
+  <Put override="true">
+    <Key>
+      <Parameter ref="gid.kvm.key"/>
+    </Key>
+    <Value ref="gid.kvm.val"/>
+  </Put>
+</KeyValueMapOperations>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LookupCache continueOnError="false" enabled="true" name="LC-GetJWKS">
+  <DisplayName>LC-GetJWKS</DisplayName>
+  <CacheKey>
+    <Prefix>IDP_JWKS_CACHE</Prefix>
+    <KeyFragment ref="propertyset.okta.okta_idp_issuer"/>
+    <KeyFragment>jwksPayload</KeyFragment>
+  </CacheKey>
+  <CacheResource>IDP_JWKS_CACHE</CacheResource>
+  <Scope>Exclusive</Scope>
+  <AssignTo>jwks</AssignTo>
+</LookupCache>

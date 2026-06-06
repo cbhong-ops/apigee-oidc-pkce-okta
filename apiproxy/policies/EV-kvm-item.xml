@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="EV-kvm-item">
+  <DisplayName>EV-kvm-item</DisplayName>
+  <Properties/>
+  <JSONPayload>
+    <Variable name="kvm.key">
+      <JSONPath>$.kvm-key</JSONPath>
+    </Variable>
+    <Variable name="kvm.val">
+      <JSONPath>$.kvm-val</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <Source clearPayload="false">request</Source>
+  <VariablePrefix>gid</VariablePrefix>
+</ExtractVariables>

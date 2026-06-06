@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="OAuthV2-StoreExternalAzCode-PKCE">
+  <DisplayName>OAuthV2-StoreExternalAzCode-PKCE</DisplayName>
+  <Properties/>
+  <Operation>GenerateAuthorizationCode</Operation>
+  <ClientId>request.formparam.client_id</ClientId>
+  <RedirectUri>oidc.flow.callback.redirect_uri</RedirectUri>
+  <ResponseType>oidc.flow.callback.response_type</ResponseType>
+  <GenerateResponse enabled="false"/>
+  <ExternalAuthorization>true</ExternalAuthorization>
+  <ExternalAuthorizationCode>request.queryparam.code</ExternalAuthorizationCode>
+  <StoreToken>true</StoreToken>
+  <Attributes>
+    <Attribute name="state1" ref="oidc.flow.callback.state1" display="false"/>
+    <Attribute name="scope" ref="oidc.flow.callback.scope" display="false"/>
+    <Attribute name="code_challenge" ref="oidc.flow.callback.code_challenge" display="false"/>
+    <Attribute name="code_challenge_method" ref="oidc.flow.callback.code_challenge_method" display="false"/>
+  </Attributes>
+  <Tokens/>
+  <RFCCompliantRequestResponse>true</RFCCompliantRequestResponse>
+</OAuthV2>

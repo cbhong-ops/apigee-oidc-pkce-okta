@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GetOAuthV2Info continueOnError="false" enabled="true" name="OAuthV2-GetOriginalStateAttributes">
+  <DisplayName>OAuthV2-GetOriginalStateAttributes</DisplayName>
+  <AuthorizationCode ref="request.formparam.code"/>
+  <IgnoreAccessTokenStatus>true</IgnoreAccessTokenStatus>
+</GetOAuthV2Info>

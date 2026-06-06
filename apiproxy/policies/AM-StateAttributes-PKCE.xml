@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-StateAttributes-PKCE">
+  <DisplayName>AM-StateAttributes-PKCE</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>request.formparam.client_id</Name>
+    <Ref>oauthv2authcode.OAuthV2-AttributesFromAzCode-State2.client_id</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>oidc.flow.callback.state2</Name>
+    <Ref>request.queryparam.state</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>oidc.flow.callback.state1</Name>
+    <Ref>oauthv2authcode.OAuthV2-AttributesFromAzCode-State2.state1</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>oidc.flow.callback.redirect_uri</Name>
+    <Ref>oauthv2authcode.OAuthV2-AttributesFromAzCode-State2.redirect_uri</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>oidc.flow.callback.response_type</Name>
+    <Ref>oauthv2authcode.OAuthV2-AttributesFromAzCode-State2.response_type</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>oidc.flow.callback.scope</Name>
+    <Ref>oauthv2authcode.OAuthV2-AttributesFromAzCode-State2.scope</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>oauth_external_authorization_status</Name>
+    <Value>true</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>oidc.flow.callback.code_challenge</Name>
+    <Ref>oauthv2authcode.OAuthV2-AttributesFromAzCode-State2.code_challenge</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>oidc.flow.callback.code_challenge_method</Name>
+    <Ref>oauthv2authcode.OAuthV2-AttributesFromAzCode-State2.code_challenge_method</Ref>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

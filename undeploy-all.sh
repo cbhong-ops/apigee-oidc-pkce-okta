@@ -10,7 +10,7 @@ else
   exit 1
 fi
 
-PROXY_NAME="oidc-okta"
+PROXY_NAME="oidc-pkce-okta"
 
 if [ -z "$APIGEE_ORG" ] || [ -z "$APIGEE_ENV" ]; then
   echo "Error: Please set APIGEE_ORG, APIGEE_ENV in env.sh."
@@ -30,8 +30,8 @@ if ! command -v apigeecli &> /dev/null; then
     export PATH=$PATH:$HOME/.apigeecli/bin
 fi
 
-APP_NAME="oidc-okta-app"
-DEV_EMAIL="oidc-dev@example.com"
+APP_NAME="oidc-pkce-okta-app"
+DEV_EMAIL="oidc-pkce-dev@example.com"
 
 echo "Deleting Developer App: $APP_NAME"
 apigeecli apps delete --name "$APP_NAME" --id "$DEV_EMAIL" --org "$APIGEE_ORG" --default-token || echo "Warning: Failed to delete app $APP_NAME"
@@ -39,8 +39,8 @@ apigeecli apps delete --name "$APP_NAME" --id "$DEV_EMAIL" --org "$APIGEE_ORG" -
 echo "Deleting Developer: $DEV_EMAIL"
 apigeecli developers delete --email "$DEV_EMAIL" --org "$APIGEE_ORG" --default-token || echo "Warning: Failed to delete developer $DEV_EMAIL"
 
-echo "Deleting API Product: oidc-okta-product"
-apigeecli products delete --name oidc-okta-product --org "$APIGEE_ORG" --default-token || echo "Warning: Failed to delete product oidc-okta-product"
+echo "Deleting API Product: oidc-pkce-okta-product"
+apigeecli products delete --name oidc-pkce-okta-product --org "$APIGEE_ORG" --default-token || echo "Warning: Failed to delete product oidc-pkce-okta-product"
 
 echo "Undeploying API Proxy..."
 apigeecli apis undeploy --name "$PROXY_NAME" --env "$APIGEE_ENV" --org "$APIGEE_ORG" --default-token || echo "Warning: Failed to undeploy proxy $PROXY_NAME"

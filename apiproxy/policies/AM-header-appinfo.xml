@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-header-appinfo">
+  <DisplayName>AM-header-appinfo</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>appinfo</Name>
+    <Ref>request.header.app-info</Ref>
+  </AssignVariable>
+  <!--IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables-->
+</AssignMessage>

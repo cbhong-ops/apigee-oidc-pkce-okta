@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GetOAuthV2Info continueOnError="false" enabled="true" name="OAuthV2-GetRefreshTokenAttributes">
+  <DisplayName>OAuthV2-GetRefreshTokenAttributes</DisplayName>
+  <RefreshToken ref="request.formparam.refresh_token"/>
+  <IgnoreAccessTokenStatus>true</IgnoreAccessTokenStatus>
+</GetOAuthV2Info>

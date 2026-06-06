@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Response">
+  <DisplayName>AM-Response</DisplayName>
+  <Properties/>
+  <Set>
+    <Payload contentType="application/json">
+        {
+            "message": "Protected resource!",
+            "user_email": "{accesstoken.user_email}",
+            "user_name": "{accesstoken.user_name}",
+            "app_name": "{apigee.developer.app.name}"
+        }
+        </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>

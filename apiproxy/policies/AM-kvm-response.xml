@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-kvm-response">
+  <DisplayName>AM-kvm-response</DisplayName>
+  <Set>
+    <Payload>{private.kvmval}</Payload>
+    <StatusCode>200</StatusCode>
+    <ReasonPhrase/>
+  </Set>
+</AssignMessage>

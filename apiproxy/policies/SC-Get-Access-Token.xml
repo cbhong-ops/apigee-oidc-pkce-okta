@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="SC-Get-Access-Token">
+  <DisplayName>SC-Get-Access-Token</DisplayName>
+  <Properties/>
+  <!-- <Request clearPayload="true" variable="idpPostTokenRequest"/> -->
+  <Request clearPayload="true" variable="idpPostTokenRequest"/>
+  <Response>tokenResponse</Response>
+  <HTTPTargetConnection>
+    <Properties/>
+    <!-- <URL>https://oauth2.googleapis.com/token</URL> -->
+    <URL>https://{propertyset.okta.okta_domain}{propertyset.okta.okta_token_uri}</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>
