@@ -108,8 +108,8 @@ Follow these steps to configure your Okta Developer Account to work with Apigee.
 4. Select **OIDC - OpenID Connect** as the Sign-in method, and **Web Application** as the Application type. Click **Next**.
 ![okta create app integration](./images/okta-oidc-02.png)
 5. Configure the application:
-   - **App integration name**: `Apigee App`
-   - **Grant type**: Authorization Code
+   - **App integration name**: `Apigee PKCE App`
+   - **Grant type**: Authorization Code, Refresh Token   
    - **Sign-in redirect URIs**: 
      ```text
      https://YOUR_APIGEE_HOST/v1/oidc/pkce/callback
@@ -131,11 +131,12 @@ Follow these steps to configure your Okta Developer Account to work with Apigee.
 > 4. Ensure there is a rule that matches your test user or group and permits access. For detailed steps, see the [Okta Support Article](https://support.okta.com/help/s/article/error-idx-error-code-no-matching-policy-you-are-not-allowed-to-access-this-app-to-request-access-contact-an-admin?language=en_US).
 
 
-### 2. Capture Client Credentials & Okta Domain
-On the Okta App configuration page, copy and save the following credentials:
+### 2. Capture Client Credentials, Okta Domain & Configure PKCE
+On the Okta App configuration page, copy and save the following credentials, and ensure PKCE is enabled:
 - **Client ID**
 - **Client Secret**
 - **Okta Domain** (e.g., `integrator-XXXXXX.okta.com`)
+- **PKCE**: Under the **Client Credentials** section, verify that **Require PKCE as additional verification** is checked.
 ![okta credentials](./images/okta-oidc-051.png)
 
 ### 3. Create a Test User in Okta
