@@ -2,7 +2,7 @@
 
 This repository contains the configuration and resources to integrate **Apigee** with **Okta** as an external Identity Provider (IdP) using the OpenID Connect (OIDC) protocol. 
 
-In this architecture, Apigee acts as an OAuth 2.0 Authorization Server and API Gateway. It mediates the authentication flow (Authorization Code Grant) with Okta, stores the issued tokens, and validates incoming API requests locally without forwarding every request to Okta.
+In this architecture, Apigee acts as an OAuth 2.0 Authorization Server and API Gateway. It mediates the authentication flow (Authorization Code Grant) with Okta, stores the issued tokens, and validates incoming API requests locally without forwarding every request to Okta. Furthermore, to enhance security and prevent authorization code interception attacks, **PKCE (Proof Key for Code Exchange)** is strictly enforced throughout the authentication flow.
 
 ---
 
@@ -148,7 +148,7 @@ On the Okta App configuration page, copy and save the following credentials:
 ### 4. Assign the Application to the Test User
 If you did not select "Allow everyone in your organization to access" during the application setup (or if your Okta organization requires manual assignment):
 1. Navigate to **Applications** > **Applications**.
-2. Click on the application you created (`Apigee App`).
+2. Click on the application you created (`Apigee PKCE App`).
 3. Select the **Assignments** tab.
 4. Click the **Assign** dropdown and choose **Assign to People**.
 5. Find your test user, click **Assign**, and click **Save and Go Back**.
