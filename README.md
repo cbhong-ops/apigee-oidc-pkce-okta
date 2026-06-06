@@ -300,3 +300,12 @@ Once testing is complete, you can remove all created Apigee resources (Developer
 ./undeploy-all.sh
 ```
 
+---
+
+## References
+
+This project was built with reference to the following Apigee DevRel implementations:
+- [IdP Okta Integration](https://github.com/apigee/devrel/tree/main/labs/idp-okta-integration)
+- [Identity Facade Pattern](https://github.com/apigee/devrel/tree/main/references/identity-facade)
+
+
